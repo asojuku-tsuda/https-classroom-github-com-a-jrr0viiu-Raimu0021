@@ -9,13 +9,20 @@
     <div class="login-box">
       <h2>
       <?php
-        if (mb_ereg('^[0-9]+$', $indata) == false)
-        {
-        die("数字を入力してください。");
+        if (isset($_GET['indata'])) {
+          $indata = $_GET['indata'];
+          
+          if (mb_ereg('^[0-9]+$', $indata) == false) {
+            die("数字を入力してください。");
+          }
+          
+          echo "入力された数字は： ". $indata;
+        } else {
+          echo "数字を入力してください。";
         }
-        echo "入力された数字は： " . $indata
-        ?>
-    </h2>
+      ?>
+      </h2>
     </div>
   </body>
 </html>
+
